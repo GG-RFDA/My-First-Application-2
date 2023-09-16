@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Заменяем первый элемент на LinearLayout, чтобы иметь полную свободу действий -->
+<!-- Ниже задаём вертикальное размещение для блоков, относящимся к пользователям -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundGray"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <!-- Задаём некоторые свойства для экрана пользователя (ширина, задний фон, расположение элемента и т.д.) -->
+    <LinearLayout
+        android:id="@+id/layoutMainInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Задаём некоторые свойства для фото (ширина, высота, сохранение пропорции и т.д.) -->
+        <ImageView
+            android:id="@+id/imgMainPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/main_photo" />
+        <!-- Задаём некоторые свойства для имени пользователя -->
+        <TextView
+            android:id="@+id/txtUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Имя пользователя"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/layoutInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- Задаём некоторые свойства для первой кнопки -->
+            <Button
+                android:id="@+id/btnCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/transparent"
+                android:drawableLeft="@drawable/ic_city"
+                android:text="Город"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+            <!-- Задаём некоторые свойства для второй кнопки -->
+            <Button
+                android:id="@+id/btnInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:drawableLeft="@drawable/ic_info"
+                android:text="Информация"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+        </LinearLayout>
+        <!-- Задаём некоторые свойства для кнопки "Добавить в друзья" -->
+        <Button
+            android:id="@+id/btnAdd"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/btn_gray"
+            android:drawableLeft="@drawable/ic_plus"
+            android:padding="12dp"
+            android:text="Добавить в друзья"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutFriends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:orientation="horizontal">
+        <!-- Задаём некоторые свойства для отображения кол-ва друзей -->
+        <Button
+            android:id="@+id/btnFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="354\nдруга"
+            android:background="@color/transparent"
+            android:textAllCaps="false"
+            android:textColor="@color/black"/>
+        <!-- Задаём некоторые свойства для отображения кол-ва подписчиков -->
+        <Button
+            android:id="@+id/btnFollowers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="15\nподписчиков"
+            android:background="@color/transparent"
+            android:textAllCaps="false"
+            android:textColor="@color/gray"/>
+        <!-- Задаём некоторые свойства для отображения кол-ва подписок -->
+        <Button
+            android:id="@+id/btnFollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5\nподписок"
+            android:background="@color/transparent"
+            android:textAllCaps="false"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnUserPhoto"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/btn_gray"
+                    android:drawableLeft="@drawable/ic_user_photo"
+                    android:text="Фото"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue" />
+                <!-- Задаём некоторые свойства для видео -->
+                <Button
+                    android:id="@+id/btnUserVideos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/transparent"
+                    android:drawableLeft="@drawable/ic_user_video"
+                    android:text="Видео"
+                    android:textAllCaps="false"
+
+                    />
+                <!-- Задаём некоторые свойства для историй -->
+                <Button
+                    android:id="@+id/btnUserStories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/transparent"
+                    android:drawableLeft="@drawable/ic_user_links"
+                    android:text="Истории"
+                    android:textAllCaps="false" />
+                <!-- Задаём некоторые свойства для музыки -->
+                <Button
+                    android:id="@+id/btnUserMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/transparent"
+                    android:drawableLeft="@drawable/ic_user_video"
+                    android:text="Музыка"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <!-- Задаём некоторые свойства для пространства со скроллом -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3">
+                <!-- Задаём некоторые свойства для изображений -->
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:adjustViewBounds="false"
+                    android:scaleType="fitXY"
+                    android:layout_rowWeight="1"
+                    app:srcCompat="@drawable/photo" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:adjustViewBounds="false"
+                    android:scaleType="fitXY"
+                    android:layout_rowWeight="1"
+                    app:srcCompat="@drawable/photo" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:adjustViewBounds="false"
+                    android:scaleType="fitXY"
+                    android:layout_rowWeight="1"
+                    app:srcCompat="@drawable/photo" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:adjustViewBounds="false"
+                    android:scaleType="fitXY"
+                    android:layout_rowWeight="1"
+                    app:srcCompat="@drawable/photo" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:adjustViewBounds="false"
+                    android:scaleType="fitXY"
+                    android:layout_rowWeight="1"
+                    app:srcCompat="@drawable/photo" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:adjustViewBounds="false"
+                    android:scaleType="fitXY"
+                    android:layout_rowWeight="1"
+                    app:srcCompat="@drawable/photo" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:adjustViewBounds="false"
+                    android:scaleType="fitXY"
+                    android:layout_rowWeight="1"
+                    app:srcCompat="@drawable/photo" />
+
+            </GridLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>
